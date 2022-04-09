@@ -15,10 +15,11 @@ int min(int a, int b)
   return b;
 }
 
-void chunk_heal_check(void *arg) {
-  return NULL;
+void *chunk_heal_check(void *arg)
+{
+  return arg;
 }
-int chunk_init(chunk_t *blk,  int id, void *ctx)
+int chunk_init(chunk_t *blk, int id, void *ctx)
 {
   if (blk != NULL && id >= 0)
   {
@@ -30,7 +31,7 @@ int chunk_init(chunk_t *blk,  int id, void *ctx)
     blk->offset = 0;
     blk->chunk_id = id;
     blk->ctx = ctx;
-    pthread_create(&blk->thd,NULL,chunk_heal_check,blk);
+    pthread_create(&blk->thd, NULL, chunk_heal_check, blk);
     return 0;
   }
   return -1;
@@ -75,6 +76,7 @@ void chunk_deinit(chunk_t *blk)
 {
   if (blk != NULL)
   {
+    pthread_join(blk->thd,NULL);
     close(blk->fd);
     blk->fd = -1;
   }

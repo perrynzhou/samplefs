@@ -14,17 +14,20 @@
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
+#include <errno.h>
 #include <fcntl.h>
 #include <stdbool.h>
 #include <pthread.h>
-  #include <sys/types.h>
-       #include <sys/socket.h>
-#define  CHUNK_OP_LEN (65535)
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <sys/uio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#define CHUNK_OP_LEN (65535)
 typedef uint32_t (*c_hashmap_hash_cb)(void *, size_t);
-typedef int (*c_hashmap_traverse_cb)(void *,void *);
-typedef int (*c_hashmap_key_compare_cb)(void *,void *,size_t);
+typedef int (*c_hashmap_traverse_cb)(void *, void *);
+typedef int (*c_hashmap_key_compare_cb)(void *, void *, size_t);
 
 typedef void (*c_hashmap_free_cb)(void *);
 

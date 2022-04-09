@@ -12,5 +12,6 @@
 #include "c_hashmap.h"
 int main() {
   chunk_cache_t  *blk=chunk_cache_new(10);
+  chunk_cache_destroy(blk);
   return 0;
 }
