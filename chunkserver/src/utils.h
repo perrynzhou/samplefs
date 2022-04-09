@@ -30,5 +30,5 @@ typedef int (*c_hashmap_traverse_cb)(void *, void *);
 typedef int (*c_hashmap_key_compare_cb)(void *, void *, size_t);
 
 typedef void (*c_hashmap_free_cb)(void *);
-
+int gen_uuid(char *buf,size_t n);
 #endif
