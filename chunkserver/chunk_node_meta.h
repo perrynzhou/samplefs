@@ -17,7 +17,7 @@ typedef struct
    size_t chunk_size;
    char node_addr[0];
 } chunk_node_meta_t;
-chunk_node_meta_meta_t *chunk_node_meta_alloc(conf_t *cf);
+chunk_node_meta_t *chunk_node_meta_alloc(conf_t *cf);
 int chunk_node_meta_start(chunk_node_meta_t *node_meta,net_sock_t *meta);
 void chunk_node_meta_destroy(chunk_node_meta_t *cn);
 #endif
