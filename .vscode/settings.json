@@ -1,6 +1,8 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
-        "c_hashmap.h": "c"
+        "c_hashmap.h": "c",
+        "utils.h": "c",
+        "net_sock.h": "c"
     }
 }
