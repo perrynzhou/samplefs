@@ -18,6 +18,8 @@
 #include <fcntl.h>
 #include <stdbool.h>
 #include <pthread.h>
+#include <dirent.h>
+#include <ctype.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/time.h>
@@ -31,4 +33,5 @@ typedef int (*c_hashmap_key_compare_cb)(void *, void *, size_t);
 
 typedef void (*c_hashmap_free_cb)(void *);
 int gen_uuid(char *buf,size_t n);
+bool is_digit(const char *buf,size_t n);
 #endif

@@ -36,6 +36,16 @@ int chunk_init(chunk_t *blk, int id, void *ctx)
   }
   return -1;
 }
+chunk_t * chunk_alloc(int id, void *ctx) {
+   chunk_t *ck = (chunk_t *)calloc(1,sizeof(chunk_t));
+   assert(ck !=NULL);
+   if(chunk_init(ck,id,ctx) !=0) {
+
+     free(ck);
+     ck = NULL;
+   }
+   return ck;
+}
 ssize_t chunk_write(chunk_t *blk, void *buf, size_t pos, size_t len)
 {
   lseek(blk->fd, pos, SEEK_CUR);
@@ -79,5 +89,14 @@ void chunk_deinit(chunk_t *blk)
     pthread_join(blk->thd,NULL);
     close(blk->fd);
     blk->fd = -1;
+  }
+}
+
+void chunk_destroy(chunk_t *ck)
+{
+  chunk_deinit(ck);
+  if(ck !=NULL) {
+     free(ck);
+     ck = NULL;
   }
 }

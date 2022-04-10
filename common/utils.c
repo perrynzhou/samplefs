@@ -22,3 +22,18 @@ int gen_uuid(char *buf, size_t n)
   }
   return -1;
 }
+bool is_digit(const char *buf,size_t n)
+{
+
+  if(buf==NULL|| n<=0) {
+    return false;
+  }
+  for(size_t i=0;i<n;i++){
+    if(isdigit(buf[i])==0)
+    {
+      return false;
+    }
+  }
+  return true;
+ 
+}
