@@ -64,11 +64,9 @@ chunk_cache_t *chunk_cache_load(char *root)
     }
     if (S_ISREG(st.st_mode) && is_digit(dp->d_name, strlen(dp->d_name)))
     {
-
       int chunk_id = atoi(dp->d_name);
       chunk_t *ck = chunk_alloc(chunk_id, NULL);
       ck->total = st.st_size;
-
       vector[i++] = ck;
     }
   }
